@@ -15,7 +15,7 @@ exports.handler = async function (event) {
     return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ok: true }) };
   }
 
-  var required = ['name', 'email', 'phone', 'messenger', 'contact', 'consent'];
+  var required = ['class', 'name', 'email', 'phone', 'messenger', 'contact', 'consent'];
   for (var i = 0; i < required.length; i++) {
     if (!data[required[i]]) {
       return { statusCode: 400, body: JSON.stringify({ error: 'missing field: ' + required[i] }) };

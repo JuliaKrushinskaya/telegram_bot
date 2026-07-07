@@ -1236,12 +1236,55 @@ footer ul{ display: grid; gap: .6em; }
 }
 .reg-form__field input:focus,
 .reg-form__field select:focus{ outline: 2px solid var(--sea-deep); outline-offset: 1px; }
-#reg-class optgroup{
+.reg-form__classes-head{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--sp-2);
+}
+.reg-form__selectall{
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--sea-deep);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  white-space: nowrap;
+}
+.reg-form__classes{
+  max-height: 220px;
+  overflow-y: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-s);
+  padding: .3rem .8rem;
+  display: grid;
+  gap: .1em;
+  background: var(--white);
+}
+.reg-form__month-label{
+  margin-top: .7em;
   font-weight: 700;
-  font-style: normal;
-  font-size: 1.05em;
+  font-size: .8rem;
+  letter-spacing: .03em;
   color: var(--gold);
 }
+.reg-form__classes .reg-form__month-label:first-child{ margin-top: .4em; }
+.reg-form__check{
+  display: flex;
+  align-items: flex-start;
+  gap: .6em;
+  padding: .45em 0;
+  font-size: .92rem;
+  font-weight: 500;
+  color: var(--charcoal);
+  cursor: pointer;
+}
+.reg-form__check input{ margin-top: .25em; flex-shrink: 0; }
+.reg-form__error{
+  margin-top: .4em;
+  font-size: .82rem;
+  color: #B0432F;
+}
+.reg-form__error[hidden]{ display: none; }
 .reg-form__messenger{ border: 0; padding: 0; margin: 0; }
 .reg-form__messenger legend{
   font-size: .88rem;

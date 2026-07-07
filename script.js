@@ -166,22 +166,30 @@
   var overlay = document.getElementById('registration-overlay');
   var closeBtn = document.getElementById('registration-close');
   var form = document.getElementById('registration-form');
-  var classSelect = document.getElementById('reg-class');
+  var classCheckboxes = document.querySelectorAll('input[name="classes"]');
+  var classError = document.getElementById('reg-class-error');
+  var selectAllBtn = document.getElementById('reg-select-all');
   var statusEl = document.getElementById('reg-form-status');
   var lastFocused = null;
 
   function openModal(className) {
     if (!overlay) return;
     lastFocused = document.activeElement;
-    var matched = false;
-    Array.prototype.forEach.call(classSelect.options, function (opt) {
-      if (className && opt.value === className) matched = true;
+    classCheckboxes.forEach(function (cb) {
+      cb.checked = !!(className && cb.value === className);
     });
-    classSelect.value = matched ? className : '';
+    if (classError) classError.hidden = true;
     overlay.hidden = false;
     document.body.style.overflow = 'hidden';
-    var firstField = classSelect.value ? form.querySelector('input[name="name"]') : classSelect;
+    var firstField = className ? form.querySelector('input[name="name"]') : classCheckboxes[0];
     if (firstField) firstField.focus();
+  }
+
+  if (selectAllBtn) {
+    selectAllBtn.addEventListener('click', function () {
+      classCheckboxes.forEach(function (cb) { cb.checked = true; });
+      if (classError) classError.hidden = true;
+    });
   }
 
   function closeModal() {
@@ -210,10 +218,26 @@
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
+
+      var checkedClasses = Array.prototype.filter.call(classCheckboxes, function (cb) { return cb.checked; })
+        .map(function (cb) { return cb.value; });
+
+      if (checkedClasses.length === 0) {
+        if (classError) classError.hidden = false;
+        document.getElementById('reg-classes').scrollIntoView({ block: 'center' });
+        return;
+      }
+      if (classError) classError.hidden = true;
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
       var submitBtn = form.querySelector('.reg-form__submit');
       var fd = new FormData(form);
       var payload = {
-        class: fd.get('class') || '',
+        class: checkedClasses.join('; '),
         name: fd.get('name') || '',
         email: fd.get('email') || '',
         phone: fd.get('phone') || '',

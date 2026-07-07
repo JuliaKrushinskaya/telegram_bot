@@ -772,33 +772,35 @@
     <p class="modal__lead">Заполните форму — я свяжусь с вами, чтобы согласовать оплату.</p>
 
     <form id="registration-form" class="reg-form" novalidate>
-      <label class="reg-form__field">
-        <span>Класс</span>
-        <select name="class" id="reg-class" required>
-          <option value="" disabled selected>Выберите класс</option>
-          <optgroup label="Август 2026">
-            <option value="Открытая встреча — 1 августа">Открытая встреча — 1 августа (сб), 10:00–11:30</option>
-            <option value="Сколько стоит ваша жизнь — 3 августа">Сколько стоит ваша жизнь — 3 августа (пн), 10:00–13:00</option>
-            <option value="Найти свою идентичность — 5 августа">Найти свою идентичность — 5 августа (ср), 10:00–13:00</option>
-            <option value="Быть вместе: 5 элементов близости — 7 августа">Быть вместе: 5 элементов близости — 7 августа (пт), 10:00–13:00</option>
-            <option value="Создавайте больше! — 9 августа">Создавайте больше! — 9 августа (вс), 10:00–13:00</option>
-          </optgroup>
-          <optgroup label="Сентябрь 2026">
-            <option value="Открытая встреча — 1 сентября">Открытая встреча — 1 сентября (вт), 10:00–11:30</option>
-            <option value="Любая леди — женщина, но не любая женщина — леди — 3 сентября">Любая леди — женщина, но не любая женщина — леди — 3 сентября (чт), 10:00–13:00</option>
-            <option value="Дар позволения — 5 сентября">Дар позволения — 5 сентября (сб), 10:00–13:00</option>
-            <option value="Сколько вы готовы получать? — 7 сентября">Сколько вы готовы получать? — 7 сентября (пн), 10:00–13:00</option>
-            <option value="Создание будущего начинается сейчас — 9 сентября">Создание будущего начинается сейчас — 9 сентября (ср), 10:00–13:00</option>
-          </optgroup>
-          <optgroup label="Октябрь 2026">
-            <option value="Открытая встреча — 1 октября">Открытая встреча — 1 октября (чт), 10:00–11:30</option>
-            <option value="Телесная осознанность — 3 октября">Телесная осознанность — 3 октября (сб), 10:00–13:00</option>
-            <option value="Новая тема по запросам участников — 5 октября">Новая тема по запросам участников — 5 октября (пн), 10:00–13:00</option>
-            <option value="Про отношения — 7 октября">Про отношения — 7 октября (ср), 10:00–13:00</option>
-            <option value="Сколько стоит ваша жизнь? — 9 октября">Сколько стоит ваша жизнь? — 9 октября (пт), 10:00–13:00</option>
-          </optgroup>
-        </select>
-      </label>
+      <div class="reg-form__field">
+        <div class="reg-form__classes-head">
+          <span>Класс (можно выбрать несколько)</span>
+          <button type="button" class="reg-form__selectall" id="reg-select-all">Отметить все</button>
+        </div>
+        <div class="reg-form__classes" id="reg-classes">
+          <p class="reg-form__month-label">Август 2026</p>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Открытая встреча — 1 августа"><span>Открытая встреча — 1 августа (сб), 10:00–11:30</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Сколько стоит ваша жизнь — 3 августа"><span>Сколько стоит ваша жизнь — 3 августа (пн), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Найти свою идентичность — 5 августа"><span>Найти свою идентичность — 5 августа (ср), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Быть вместе: 5 элементов близости — 7 августа"><span>Быть вместе: 5 элементов близости — 7 августа (пт), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Создавайте больше! — 9 августа"><span>Создавайте больше! — 9 августа (вс), 10:00–13:00</span></label>
+
+          <p class="reg-form__month-label">Сентябрь 2026</p>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Открытая встреча — 1 сентября"><span>Открытая встреча — 1 сентября (вт), 10:00–11:30</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Любая леди — женщина, но не любая женщина — леди — 3 сентября"><span>Любая леди — женщина, но не любая женщина — леди — 3 сентября (чт), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Дар позволения — 5 сентября"><span>Дар позволения — 5 сентября (сб), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Сколько вы готовы получать? — 7 сентября"><span>Сколько вы готовы получать? — 7 сентября (пн), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Создание будущего начинается сейчас — 9 сентября"><span>Создание будущего начинается сейчас — 9 сентября (ср), 10:00–13:00</span></label>
+
+          <p class="reg-form__month-label">Октябрь 2026</p>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Открытая встреча — 1 октября"><span>Открытая встреча — 1 октября (чт), 10:00–11:30</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Телесная осознанность — 3 октября"><span>Телесная осознанность — 3 октября (сб), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Новая тема по запросам участников — 5 октября"><span>Новая тема по запросам участников — 5 октября (пн), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Про отношения — 7 октября"><span>Про отношения — 7 октября (ср), 10:00–13:00</span></label>
+          <label class="reg-form__check"><input type="checkbox" name="classes" value="Сколько стоит ваша жизнь? — 9 октября"><span>Сколько стоит ваша жизнь? — 9 октября (пт), 10:00–13:00</span></label>
+        </div>
+        <p class="reg-form__error" id="reg-class-error" hidden>Выберите хотя бы один класс</p>
+      </div>
 
       <label class="reg-form__field">
         <span>Имя и фамилия</span>
