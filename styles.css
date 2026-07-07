@@ -1236,6 +1236,12 @@ footer ul{ display: grid; gap: .6em; }
 }
 .reg-form__field input:focus,
 .reg-form__field select:focus{ outline: 2px solid var(--sea-deep); outline-offset: 1px; }
+#reg-class optgroup{
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.05em;
+  color: var(--gold);
+}
 .reg-form__messenger{ border: 0; padding: 0; margin: 0; }
 .reg-form__messenger legend{
   font-size: .88rem;
