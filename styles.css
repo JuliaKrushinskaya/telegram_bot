@@ -1178,6 +1178,7 @@ footer ul{ display: grid; gap: .6em; }
   max-width: 30rem;
   max-height: 90vh;
   overflow-y: auto;
+  overflow-x: hidden;
   background: var(--ivory);
   border-radius: var(--radius-l);
   box-shadow: var(--shadow-hover);
@@ -1215,9 +1216,13 @@ footer ul{ display: grid; gap: .6em; }
   font-size: .88rem;
   font-weight: 600;
   color: var(--charcoal-soft);
+  min-width: 0;
 }
 .reg-form__field input,
 .reg-form__field select{
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
   font: inherit;
   font-family: var(--font-sans);
   font-weight: 500;
