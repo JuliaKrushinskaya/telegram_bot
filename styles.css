@@ -1218,7 +1218,9 @@ footer ul{ display: grid; gap: .6em; }
   color: var(--charcoal-soft);
   min-width: 0;
 }
-.reg-form__field input,
+.reg-form__field input[type="text"],
+.reg-form__field input[type="email"],
+.reg-form__field input[type="tel"],
 .reg-form__field select{
   width: 100%;
   min-width: 0;
@@ -1234,22 +1236,10 @@ footer ul{ display: grid; gap: .6em; }
   padding: .75rem .9rem;
   min-height: 44px;
 }
-.reg-form__field input:focus,
+.reg-form__field input[type="text"]:focus,
+.reg-form__field input[type="email"]:focus,
+.reg-form__field input[type="tel"]:focus,
 .reg-form__field select:focus{ outline: 2px solid var(--sea-deep); outline-offset: 1px; }
-.reg-form__classes-head{
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--sp-2);
-}
-.reg-form__selectall{
-  font-size: .82rem;
-  font-weight: 600;
-  color: var(--sea-deep);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  white-space: nowrap;
-}
 .reg-form__classes{
   max-height: 220px;
   overflow-y: auto;

@@ -168,7 +168,6 @@
   var form = document.getElementById('registration-form');
   var classCheckboxes = document.querySelectorAll('input[name="classes"]');
   var classError = document.getElementById('reg-class-error');
-  var selectAllBtn = document.getElementById('reg-select-all');
   var statusEl = document.getElementById('reg-form-status');
   var lastFocused = null;
 
@@ -183,13 +182,6 @@
     document.body.style.overflow = 'hidden';
     var firstField = className ? form.querySelector('input[name="name"]') : classCheckboxes[0];
     if (firstField) firstField.focus();
-  }
-
-  if (selectAllBtn) {
-    selectAllBtn.addEventListener('click', function () {
-      classCheckboxes.forEach(function (cb) { cb.checked = true; });
-      if (classError) classError.hidden = true;
-    });
   }
 
   function closeModal() {
