@@ -1,3 +1,5 @@
+const { createLead } = require('./_lib/amocrm');
+
 exports.handler = async function (event) {
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' };
@@ -49,6 +51,16 @@ exports.handler = async function (event) {
     }
   } catch (err) {
     return { statusCode: 502, body: JSON.stringify({ error: 'Network error' }) };
+  }
+
+  // amoCRM is a secondary channel — never let a CRM hiccup block the visitor's
+  // confirmation, Telegram delivery above already succeeded at this point.
+  if (process.env.AMOCRM_CLIENT_ID) {
+    try {
+      await createLead(data);
+    } catch (err) {
+      console.error('amoCRM lead creation failed:', err.message);
+    }
   }
 
   return { statusCode: 200, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ ok: true }) };
