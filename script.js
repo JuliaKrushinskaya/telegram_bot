@@ -269,4 +269,35 @@
         });
     });
   }
+
+  /* ---------------- cookie consent banner ---------------- */
+  var cookieBanner = document.getElementById('cookie-banner');
+  var cookieAccept = document.getElementById('cookie-accept');
+  var COOKIE_CONSENT_KEY = 'nhatrang-cookie-consent';
+
+  function updateStickyOffset() {
+    if (!cookieBanner) return;
+    var offset = cookieBanner.hidden ? 0 : cookieBanner.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--cookie-offset', offset + 'px');
+  }
+
+  if (cookieBanner) {
+    var hasConsent = false;
+    try { hasConsent = localStorage.getItem(COOKIE_CONSENT_KEY) === 'accepted'; } catch (err) {}
+
+    if (!hasConsent) {
+      cookieBanner.hidden = false;
+      updateStickyOffset();
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', function () {
+        try { localStorage.setItem(COOKIE_CONSENT_KEY, 'accepted'); } catch (err) {}
+        cookieBanner.hidden = true;
+        updateStickyOffset();
+      });
+    }
+
+    window.addEventListener('resize', updateStickyOffset);
+  }
 })();
