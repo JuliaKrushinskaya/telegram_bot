@@ -1,7 +1,11 @@
 const { getStore } = require('@netlify/blobs');
 
 function tokenStore() {
-  return getStore('amocrm');
+  return getStore({
+    name: 'amocrm',
+    siteID: process.env.NETLIFY_SITE_ID,
+    token: process.env.NETLIFY_BLOBS_TOKEN
+  });
 }
 
 async function exchangeToken(body) {
